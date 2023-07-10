@@ -41,7 +41,7 @@ const Editor = () => {
   useEffect(() => {
     const quillServer = new Quill("#container", {
       theme: "snow",
-      modules: { toolbar: toolbarOptions },
+      modules: { toolbar: toolbarOptions },//for setting extra feature
     });
     quillServer.disable();
     quillServer.setText("Loading the document...");
@@ -80,7 +80,7 @@ const Editor = () => {
       quill.updateContents(delta);
     };
 
-    socket && socket.on("receive-changes", handleChange);
+    socket && socket.on("receive-changes", handleChange);//updating changes to all document
 
     return () => {
       socket && socket.off("receive-changes", handleChange);
